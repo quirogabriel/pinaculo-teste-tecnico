@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+enum CpfStatus {
+  REGULAR
+  BLOCKED
+}
+
+model User {
+  id        String  @id @default(cuid())
+  cpf       String  @unique
+  name      String
+  email     String  @unique
+  income    Int     @default(0) // centavos
+  emailSent Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("user")
+}
