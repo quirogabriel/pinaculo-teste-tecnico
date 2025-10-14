@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-Esta é uma API REST desenvolvida com NestJS que gerencia a elegibilidade de usuários para cartões de crédito baseado em score de crédito e renda. Os dados de score de crédito são obtidos atráves de uma API externa. Seu objetivo é implementar dois endpoints: Um para listar todos os usuários, com as informações de crédito, e o segundo para enviar um e-mail de marketing (mockado) para um usuário a partir de seu id, caso ele seja elegível para cartão.
+Esta é uma API REST desenvolvida com NestJS que gerencia a elegibilidade de usuários para cartões de crédito baseado em score de crédito e renda. Os dados de score de crédito são obtidos através de uma API externa. Seu objetivo é implementar dois endpoints: Um para listar todos os usuários, com as informações de crédito, e o segundo para enviar um e-mail de marketing (mockado) para um usuário a partir de seu id, caso ele seja elegível para cartão.
 
 ## Configuração do Ambiente
 
@@ -132,42 +132,6 @@ Você deve implementar os seguintes endpoints no arquivo `src/core/credit-card/c
         "access": true,
         "limit": 1500,
         "reason": null
-      }
-    },
-    {
-      "id": "clxxx0987654321",
-      "cpf": "98765432100",
-      "name": "Maria Santos",
-      "email": "maria@example.com",
-      "income": 500000,
-      "emailSent": false,
-      "cpfDetails": {
-        "cpf": "987.654.321-00",
-        "score": 250,
-        "status": "REGULAR"
-      },
-      "creditDetails": {
-        "access": false,
-        "limit": 0,
-        "reason": "Score insuficiente"
-      }
-    },
-    {
-      "id": "clxxx1111111111",
-      "cpf": "11111111111",
-      "name": "Pedro Costa",
-      "email": "pedro@example.com",
-      "income": 400000,
-      "emailSent": true,
-      "cpfDetails": {
-        "cpf": "111.111.111-11",
-        "score": 500,
-        "status": "BLOCKED"
-      },
-      "creditDetails": {
-        "access": false,
-        "limit": 0,
-        "reason": "CPF bloqueado"
       }
     },
     {
