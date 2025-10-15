@@ -185,7 +185,7 @@ Você deve implementar os seguintes endpoints no arquivo `src/core/credit-card/c
 
 **Resposta de Sucesso (200 OK):**
 
-```json
+```
 Status 200 sem corpo de resposta
 ```
 
@@ -240,12 +240,13 @@ curl -X POST http://localhost:3003/credit-card/user/{userId}/send-marketing-emai
 
 Seu código será avaliado com base em:
 
-1. ✅ **Funcionalidade** - Os endpoints funcionam conforme especificado
-2. ✅ **Tratamento de Erros** - Erros são tratados adequadamente com status HTTP corretos
-3. ✅ **Performance** - Tempo de resposta
-4. ✅ **Código Limpo** - Organização, nomenclatura e legibilidade
-5. ✅ **Boas Práticas** - Uso correto de TypeScript, async/await, e padrões NestJS
-6. ✅ **Regras de Negócio** - Implementação correta das regras de elegibilidade e cálculo de limite
+1. ✅ **Comunicação** - Capacidade de explicar com clareza a linha de raciocínio para resolver o problema
+2. ✅ **Funcionalidade** - Os endpoints funcionam conforme especificado
+3. ✅ **Tratamento de Erros** - Erros são tratados adequadamente com status HTTP corretos
+4. ✅ **Performance** - Tempo de resposta
+5. ✅ **Código Limpo** - Organização, nomenclatura e legibilidade
+6. ✅ **Boas Práticas** - Uso correto de TypeScript, async/await, e padrões NestJS
+7. ✅ **Regras de Negócio** - Implementação correta das regras de elegibilidade e cálculo de limite
 
 ---
 
