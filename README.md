@@ -1,5 +1,15 @@
 # Teste Técnico - API de Cartão de Crédito
 
+## Instruções iniciais
+
+### Parabéns por ter chegado na entrevista técnica, agora é hora de mostrar suas habilidades neste pequeno teste
+
+### Leia as instruções com calma e atenção, e tire as dúvidas com os entrevistadores presentes no teste.
+
+### Será dado um tempo limite para entender e processar o desafio, para assim então começar a codagem
+
+### Boa sorte e bom desempenho 🚀🚀🚀
+
 ## Visão Geral
 
 Esta é uma API REST desenvolvida com NestJS que gerencia a elegibilidade de usuários para cartões de crédito baseado em score de crédito e renda. Os dados de score de crédito são obtidos através de uma API externa. Seu objetivo é implementar dois endpoints: Um para listar todos os usuários, com as informações de crédito, e o segundo para enviar um e-mail de marketing (mockado) para um usuário a partir de seu id, caso ele seja elegível para cartão.
@@ -37,7 +47,7 @@ A API estará disponível em `http://localhost:3003`
 
 ## API Externa de Score de Crédito
 
-A aplicação deve consumir uma API externa para obter os dados de score de crédito dos usuários. **Esta API já está configurada e rodando em segundo plano.**
+A aplicação deve consumir uma API externa para obter os dados de score de crédito dos usuários.
 
 ### Especificações da API Externa
 
@@ -179,6 +189,9 @@ Você deve implementar os seguintes endpoints no arquivo `src/core/credit-card/c
 
 **Descrição:** Envia um e-mail marketing para um usuário específico se ele for elegível para cartão de crédito.
 
+**Objetivo:** Caso o email seja enviado corretamente retornar sucesso na response e atualizar o status de envio de email do usuário.
+Caso contrário, retornar erro.
+
 **Parâmetros:**
 
 - `userId` (path parameter) - ID do usuário
@@ -198,25 +211,6 @@ Já configurado e disponível para injeção de dependência.
 ### EmailService
 
 Já implementado e disponível para injeção de dependência.
-
-## Estrutura do Projeto
-
-```
-src/
-├── app.module.ts                 # Módulo principal
-├── main.ts                       # Entrada da aplicação
-├── core/
-│   ├── credit-card/
-│   │   ├── credit-card.controller.ts  # ARQUIVO PARA IMPLEMENTAR
-│   │   ├── credit-card.service.ts     # ARQUIVO PARA IMPLEMENTAR
-│   │   └── credit-card.module.ts
-│   └── email/
-│       ├── email.service.ts      # Já implementado
-│       └── email.module.ts
-└── database/
-    ├── prisma.service.ts         # Já implementado
-    ├── prisma.module.ts
-```
 
 ## Testando a API
 
