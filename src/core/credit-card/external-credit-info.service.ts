@@ -5,9 +5,9 @@ import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class ExternalCreditInfoService {
-  private axiosInstance: AxiosInstance;
-  private apiKey: string | undefined;
-  private apiUrl: string | undefined;
+  private readonly axiosInstance: AxiosInstance;
+  private readonly apiKey: string | undefined;
+  private readonly apiUrl: string | undefined;
 
   constructor(private readonly configService: ConfigService) {
     this.apiKey = this.configService.get<string>('SCORE_API_KEY');
@@ -22,12 +22,14 @@ export class ExternalCreditInfoService {
     }
 
     this.axiosInstance = axios.create({
-      baseURL: '',
-      headers: {},
+      baseURL: this.apiUrl,
+      headers: {
+        'x-api-key': this.apiKey,
+      },
     });
   }
 
-  async getCreditInfo(): Promise<IExternalApiCreditScoreDto> {
+  async getCreditInfo(cpf: string): Promise<IExternalApiCreditScoreDto | null> {
     return {} as IExternalApiCreditScoreDto;
   }
 }
