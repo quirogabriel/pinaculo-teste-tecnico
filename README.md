@@ -6,9 +6,21 @@
 
 ### Leia as instruções com calma e atenção, e tire as dúvidas com os entrevistadores presentes no teste.
 
-### Será dado um tempo limite para entender e processar o desafio, para assim então começar a codagem
+### Será dado um tempo adicional para ler a documentação e entender o desafio
 
-### Boa sorte e bom desempenho 🚀🚀🚀
+### Boa sorte! 🚀🚀🚀
+
+## Critérios de Avaliação
+
+Você será avaliado com base em:
+
+1. ✅ **Comunicação** - Capacidade de explicar com clareza a linha de raciocínio para resolver o problema
+2. ✅ **Funcionalidade** - Os endpoints funcionam conforme especificado
+3. ✅ **Tratamento de Erros** - Erros são tratados adequadamente com status HTTP corretos
+4. ✅ **Performance** - Tempo de resposta
+5. ✅ **Código Limpo** - Organização, nomenclatura e legibilidade
+6. ✅ **Boas Práticas** - Uso correto de TypeScript, async/await, e padrões NestJS
+7. ✅ **Regras de Negócio** - Implementação correta das regras de elegibilidade e cálculo de limite
 
 ## Visão Geral
 
@@ -214,34 +226,6 @@ Já implementado e disponível para injeção de dependência.
 
 ## Testando a API
 
-### 1. Testar Listagem de Usuários
-
-```bash
-curl http://localhost:3003/credit-card/users-status
-```
-
-### 2. Testar Envio de E-mail
-
-Primeiro, obtenha um ID de usuário da listagem, depois:
-
-```bash
-curl -X POST http://localhost:3003/credit-card/user/{userId}/send-marketing-email
-```
-
-**Nota:** Pode testar da maneira que preferir: Curl, Postman, Insomnia, etc.
-
-## Critérios de Avaliação
-
-Seu código será avaliado com base em:
-
-1. ✅ **Comunicação** - Capacidade de explicar com clareza a linha de raciocínio para resolver o problema
-2. ✅ **Funcionalidade** - Os endpoints funcionam conforme especificado
-3. ✅ **Tratamento de Erros** - Erros são tratados adequadamente com status HTTP corretos
-4. ✅ **Performance** - Tempo de resposta
-5. ✅ **Código Limpo** - Organização, nomenclatura e legibilidade
-6. ✅ **Boas Práticas** - Uso correto de TypeScript, async/await, e padrões NestJS
-7. ✅ **Regras de Negócio** - Implementação correta das regras de elegibilidade e cálculo de limite
-
----
+Para testar a API, basta acessar a url http://localhost:3003/docs da mesma, onde há uma documentação do swagger pré-configurada. Porém, caso prefira, é possível utilizar Curl, Postman, Insomnia, ou qualquer ferramenta de sua preferência.
 
 **Boa sorte!** 🚀
