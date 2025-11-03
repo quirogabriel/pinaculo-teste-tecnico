@@ -29,7 +29,7 @@ export class ExternalCreditInfoService {
     });
   }
 
-  async getCreditInfo(cpf: string): Promise<IExternalApiCreditScoreDto | null> {
+  async getCpfInfo(cpf: string): Promise<IExternalApiCreditScoreDto | null> {
     return {} as IExternalApiCreditScoreDto;
   }
 }

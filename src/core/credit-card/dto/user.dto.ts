@@ -6,7 +6,7 @@ export enum EnumCpfStatus {
 export enum EnumCreditDetailsReason {
   CPF_BLOCKED = 'CPF bloqueado',
   SCORE_INSUFFICIENT = 'Score insuficiente',
-  INFORMATIONS_NOT_FOUND = 'Informações de score e CPF não encontradas',
+  INFORMATION_NOT_FOUND = 'Informações de score e CPF não encontradas',
 }
 
 export interface IUserWithCreditInfoDto {
@@ -20,7 +20,7 @@ export interface IUserWithCreditInfoDto {
     cpf: string;
     score: number;
     status: EnumCpfStatus;
-  };
+  } | null;
   creditDetails: {
     access: boolean;
     limit: number;
