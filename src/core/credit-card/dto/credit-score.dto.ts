@@ -1,3 +1,11 @@
+import { EnumCpfStatus } from './user.dto';
+
 export interface IExternalApiCreditScoreDto {
-  //Informações de credito e cpf do usuário buscado pela api externa da docs
+  data: CpfDetails;
+}
+
+export interface CpfDetails {
+  cpf: string;
+  score: number;
+  status: EnumCpfStatus;
 }

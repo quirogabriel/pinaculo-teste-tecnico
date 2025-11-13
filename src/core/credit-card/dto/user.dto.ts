@@ -1,3 +1,5 @@
+import { CpfDetails } from './credit-score.dto';
+
 export enum EnumCpfStatus {
   REGULAR = 'REGULAR',
   BLOCKED = 'BLOCKED',
@@ -16,18 +18,15 @@ export interface IUserWithCreditInfoDto {
   email: string;
   income: number;
   emailSent: boolean;
-  cpfDetails: {
-    cpf: string;
-    score: number;
-    status: EnumCpfStatus;
-  } | null;
-  creditDetails: {
-    access: boolean;
-    limit: number;
-    reason: EnumCreditDetailsReason | null;
-  };
+  cpfDetails: CpfDetails | null;
+  creditDetails: CreditDetails;
 }
 
+export interface CreditDetails {
+  access: boolean;
+  limit: number;
+  reason: EnumCreditDetailsReason | null;
+}
 export interface ResponseUserDto {
   data: IUserWithCreditInfoDto[];
 }
