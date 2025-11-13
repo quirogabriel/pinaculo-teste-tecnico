@@ -1,4 +1,5 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Cache, CACHE_MANAGER } from '@nestjs/cache-manager';
+import { Inject, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { User } from '@prisma/client';
 import axios, { AxiosInstance } from 'axios';
@@ -11,7 +12,10 @@ export class ExternalCreditInfoService {
   private readonly apiKey: string | undefined;
   private readonly apiUrl: string | undefined;
 
-  constructor(private readonly configService: ConfigService) {
+  constructor(
+    private readonly configService: ConfigService,
+    @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
+  ) {
     this.apiKey = this.configService.get<string>('SCORE_API_KEY');
     this.apiUrl = this.configService.get<string>('SCORE_API_URL');
 
@@ -32,14 +36,23 @@ export class ExternalCreditInfoService {
   }
 
   async getCpfInfo(cpf: string): Promise<IExternalApiCreditScoreDto | null> {
-    let data;
+    const cacheKey = `cpf-score:${cpf}`;
+    const cachedData = await this.cacheManager.get<IExternalApiCreditScoreDto | null>(cacheKey);
+
+    if (cachedData !== undefined) {
+      return cachedData;
+    }
+
     try {
-      data = await this.axiosInstance
+      const data = await this.axiosInstance
         .get(`/score/${cpf}`)
         .then((res) => res.data as IExternalApiCreditScoreDto);
+
+      await this.cacheManager.set(cacheKey, data);
       return data;
     } catch (err) {
       if (err.response?.status === 404) {
+        await this.cacheManager.set(cacheKey, null);
         return null;
       }
       throw new InternalServerErrorException(err);

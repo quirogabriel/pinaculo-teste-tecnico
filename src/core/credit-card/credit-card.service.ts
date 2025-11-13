@@ -24,22 +24,7 @@ export class CreditCardService {
 
     const userWithCreditInfoDto: IUserWithCreditInfoDto[] = await Promise.all(
       users.map(async (user) => {
-        const externalApiCreditScoreDto: IExternalApiCreditScoreDto | null =
-          await this.externalCreditInfo.getCpfInfo(user.cpf);
-
-        const cpfDetails: CpfDetails | null = externalApiCreditScoreDto?.data ?? null;
-        const creditDetails = this.externalCreditInfo.getCpfCreditDetails(
-          externalApiCreditScoreDto,
-          user,
-        );
-
-        const data: IUserWithCreditInfoDto = {
-          ...user,
-          cpfDetails,
-          creditDetails,
-        };
-
-        return data;
+        return await this._buildUserWithCreditInfo(user);
       }),
     );
 
@@ -87,5 +72,33 @@ export class CreditCardService {
       where: { id: userId },
       data: { emailSent: true },
     });
+  }
+
+  private async _buildUserWithCreditInfo(user: {
+    name: string;
+    id: string;
+    cpf: string;
+    email: string;
+    income: number;
+    emailSent: boolean;
+    createdAt: Date;
+    updatedAt: Date;
+  }) {
+    const externalApiCreditScoreDto: IExternalApiCreditScoreDto | null =
+      await this.externalCreditInfo.getCpfInfo(user.cpf);
+
+    const cpfDetails: CpfDetails | null = externalApiCreditScoreDto?.data ?? null;
+    const creditDetails = this.externalCreditInfo.getCpfCreditDetails(
+      externalApiCreditScoreDto,
+      user,
+    );
+
+    const data: IUserWithCreditInfoDto = {
+      ...user,
+      cpfDetails,
+      creditDetails,
+    };
+
+    return data;
   }
 }
